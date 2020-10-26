@@ -18,12 +18,12 @@ use App\Http\Controllers\PublicController;
 
 //All routes defined 
 
-Route::get('/', [PublicController::class, 'index']);
-Route::get('/post/{id}', [PublicController::class,'singlePage']);
-Route::get('/about', [PublicController::class,'about']);
+Route::get('/', [PublicController::class, 'index'])->name('index');
+Route::get('/post/{id}', [PublicController::class,'singlePage'])->name('singlePage');
+Route::get('/about', [PublicController::class,'about'])->name('about');
 
-Route::get('/contact', [PublicController::class,'contact']);
-Route::post('/contact', [PublicController::class, 'contactPost']);
+Route::get('/contact', [PublicController::class,'contact'])->name('contact');
+Route::post('/contact', [PublicController::class, 'contactPost'])->name('contactPost');
 
 
 
