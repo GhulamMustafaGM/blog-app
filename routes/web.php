@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//All routes
+//All routes defined 
 
 Route::get('/', [PublicController::class, 'index']);
 Route::get('/post/{id}', [PublicController::class,'singlePage']);
