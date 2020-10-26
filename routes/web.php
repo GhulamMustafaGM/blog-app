@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//All routes
+
 Route::get('/', [PublicController::class, 'index']);
 Route::get('/post/{id}', [PublicController::class,'singlePage']);
 Route::get('/about',[PublicController::class,'about']);
 Route::get('/contact',[PublicController::class,'contact']);
+
+
