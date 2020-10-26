@@ -21,9 +21,26 @@
         </li>
 
         @if(Auth::check())
+
             <li class="nav-item">
-                <a class="nav-link" href="{{ route ('home') }}">Dashboard</a>
+                <a class="nav-link" href="{{ route ('dashboard') }}">Dashboard</a>
         </li>
+
+        <li class="nav-item">
+            <form method="POST" id="logout-form" action="{{ route('logout') }}">@csrf</form>
+            <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit(); ">Logout</a>
+    </li>
+        
+        @else 
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route ('login') }}">Login</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route ('register') }}">Register</a>
+        </li>
+
         @endif
         </ul>
     </div>
