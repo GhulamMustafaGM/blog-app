@@ -10,17 +10,21 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href= {{ 'index' }}>Home</a>
+            <a class="nav-link" href= {{ route('index') }}>Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href= {{ about }}>About</a>
+            <a class="nav-link" href= {{ route ('about') }}>About</a>
         </li>
+        
         <li class="nav-item">
-            <a class="nav-link" href="post.html">Sample Post</a>
+            <a class="nav-link" href="{{ route ('contact') }}">Contact</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+
+        @if(Auth::check())
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route ('home') }}">Dashboard</a>
         </li>
+        @endif
         </ul>
     </div>
     </div>
