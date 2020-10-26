@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section
+@section('content')
 
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('img/about-bg.jpg')">
+<header class="masthead" style="background-image: url('{{ asset('assets/img/about-bg.jpg') }}" >
 <div class="overlay"></div>
 <div class="container">
     <div class="row">

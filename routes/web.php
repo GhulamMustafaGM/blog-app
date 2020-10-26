@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\PublicController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PublicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'index']);
 Route::get('/post/{id}', [PublicController::class,'singlePage']);
-Route::get('/about',[PublicController::class,'about']);
-Route::get('/contact',[PublicController::class,'contact']);
+Route::get('/about', [PublicController::class,'about']);
+
+Route::get('/contact', [PublicController::class,'contact']);
+Route::post('/contact', [PublicController::class, 'contactPost']);
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

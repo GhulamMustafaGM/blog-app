@@ -23,5 +23,8 @@ class PublicController extends Controller
         return view('contact');
     }
 
+    public function contactPost() {
+
+    }
 
 }
