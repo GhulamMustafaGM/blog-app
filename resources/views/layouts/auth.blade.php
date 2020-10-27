@@ -18,12 +18,13 @@
 <div class="page-wrapper flex-row align-items-center">
     @yield('content')
 </div>
-<script src="./vendor/jquery/jquery.min.js"></script>
-<script src="./vendor/popper.js/popper.min.js"></script>
-<script src="./vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="./vendor/chart.js/chart.min.js"></script>
-<script src="./js/carbon.js"></script>
-<script src="./js/demo.js"></script>
+<script src="{{ asset('admin/assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/popper.js/popper.min.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('admin/assets/vendor/chart.js/chart.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/carbon.js') }}"></script>
+<script src="{{ asset('admin/assets/js/demo.js') }}"></script>
+
 </body>
 </html>
 
