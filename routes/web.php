@@ -30,3 +30,7 @@ Route::post('/contact', [PublicController::class, 'contactPost'])->name('contact
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
+Route::prefix('admin')->group(function(){
+    Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('adminDashboard');
+});
