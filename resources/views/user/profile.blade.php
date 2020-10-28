@@ -32,7 +32,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Name</label>
-                                                    <input class="form-control" name="name" value="{{Auth::user()->name}}">
+                                                    <input class="form-control" name="name" value="{{ Auth::user()->name }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@
 
                                     <div class="col-md-8">
                                         <div class="row">
-                                        	<div class="col-md-4">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label class="form-control-label">Current Password</label>
                                                     <input name="password" type="password" class="form-control">
