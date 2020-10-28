@@ -15,4 +15,12 @@ class UserController extends Controller
         return view('user.comments');
 
     }
+
+    public function profile() {
+        return view('user.profile');
+    }
+
+    public function userProfile() {
+        return view('user.userProfile');
+    }
 }

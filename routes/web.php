@@ -22,7 +22,7 @@ use App\Http\Controllers\UserController;
 //All routes defined 
 
 Route::get('/', [PublicController::class, 'index'])->name('index');
-Route::get('post/{id}', [PublicController::class,'singlePost'])->name('singlePost');
+Route::get('post/{post}', [PublicController::class,'singlePost'])->name('singlePost');
 Route::get('/about', [PublicController::class,'about'])->name('about');
 
 Route::get('/contact', [PublicController::class,'contact'])->name('contact');
@@ -37,6 +37,8 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::prefix('user')->group(function() {
     Route::get('dashboard', [UserController::class, 'dashboard'])->name('userDashboard');
     Route::get('comments', [UserController::class,'comments'])->name('userComments');
+    Route::get('profile', [UserController::class,'profile'])->name('userProfile');
+    Route::post('profile', [UserController::class, 'profilePost'])->name('userprofilePost');
 });
 
 Route::prefix('author')->group(function() {
