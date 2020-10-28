@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +22,7 @@ use App\Http\Controllers\PublicController;
 //All routes defined 
 
 Route::get('/', [PublicController::class, 'index'])->name('index');
-Route::get('/post/{id}', [PublicController::class,'singlePage'])->name('singlePage');
+Route::get('post/{id}', [PublicController::class,'singlePost'])->name('singlePost');
 Route::get('/about', [PublicController::class,'about'])->name('about');
 
 Route::get('/contact', [PublicController::class,'contact'])->name('contact');
@@ -29,8 +32,22 @@ Route::post('/contact', [PublicController::class, 'contactPost'])->name('contact
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+Route::prefix('user')->group(function() {
+    Route::get('dashboard', [UserController::class, 'dashboard'])->name('userDashboard');
+    Route::get('comments', [UserController::class,'comments'])->name('userComments');
+});
+
+Route::prefix('author')->group(function() {
+    Route::get('dashboard', [AuthorController::class, 'dashboard'])->name('authorDashboard');
+    Route::get('posts', [AuthorController::class, 'posts'])->name('authorPosts');
+    Route::get('comments', [AuthorController::class,'comments'])->name('authorComments');
+});
 
 Route::prefix('admin')->group(function(){
-    Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('adminDashboard');
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
+    Route::get('posts', [AdminController::class, 'posts'])->name('adminPosts');
+    Route::get('comments', [AdminController::class, 'comments'])->name('adminComments');
+    Route::get('users', [AdminController::class, 'users'])->name('adminUsers');
 });
