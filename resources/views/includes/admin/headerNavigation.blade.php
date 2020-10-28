@@ -13,6 +13,7 @@
     </a>
 
     <ul class="navbar-nav ml-auto">
+    <!--
         <li class="nav-item d-md-down-none">
             <a href="#">
                 <i class="fa fa-bell"></i>
@@ -26,11 +27,11 @@
                 <span class="badge badge-pill badge-danger">5</span>
             </a>
         </li>
-
+    -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="{{ asset ('admin/assets/imgs/avatar-1.png') }}"} class="avatar avatar-sm" alt="logo">
-                <span class="small ml-1 d-md-down-none">John Smith</span>
+            <span class="small ml-1 d-md-down-none">{{ Auth::user()->name }}</span>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">
@@ -39,22 +40,9 @@
                 <a href="#" class="dropdown-item">
                     <i class="fa fa-user"></i> Profile
                 </a>
-
-                <a href="#" class="dropdown-item">
-                    <i class="fa fa-envelope"></i> Messages
-                </a>
-
-                <div class="dropdown-header">Settings</div>
-
-                <a href="#" class="dropdown-item">
-                    <i class="fa fa-bell"></i> Notifications
-                </a>
-
-                <a href="#" class="dropdown-item">
-                    <i class="fa fa-wrench"></i> Settings
-                </a>
-
-                <a href="#" class="dropdown-item">
+                <form method="POST" id="logout-form" action="{{ route('logout') }}">@csrf</form>
+                <a  href="#" onclick="document.getElementById('logout-form').submit(); " class="dropdown-item">
+                
                     <i class="fa fa-lock"></i> Logout
                 </a>
             </div>
