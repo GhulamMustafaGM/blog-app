@@ -37,6 +37,7 @@ Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 Route::prefix('user')->group(function() {
     Route::get('dashboard', [UserController::class, 'dashboard'])->name('userDashboard');
     Route::get('comments', [UserController::class,'comments'])->name('userComments');
+    Route::post('comment/{id/delete}', [UserController::class,'deleteComment'])->name('deleteComment');
     Route::get('profile', [UserController::class,'profile'])->name('userProfile');
     Route::post('profile', [UserController::class, 'profilePost'])->name('userprofilePost');
 });
