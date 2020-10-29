@@ -1,1 +1,3 @@
-hi, there
+@extends('layouts.admin')
+
+admin dashboard
