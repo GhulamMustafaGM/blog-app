@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreatePost;
 use Illuminate\Support\Facades\Auth;
 
 class AuthorController extends Controller
@@ -28,5 +29,19 @@ class AuthorController extends Controller
 
     public function comments() {
         return view('author.comments');
+    }
+
+    public function newPost() {
+        return view('author.newPost');
+    }
+
+    public function createPost(CreatePost $request) {
+        $post = new Post();
+        $post->title = $request['title'];
+        $post->content = $request['content'];
+        $post->user_id = Auth::id();
+        $post->save();
+
+        return back()->with('success', 'Post is successfully created.');
     }
 }

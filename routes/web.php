@@ -45,6 +45,8 @@ Route::prefix('user')->group(function() {
 Route::prefix('author')->group(function() {
     Route::get('dashboard', [AuthorController::class, 'dashboard'])->name('authorDashboard');
     Route::get('posts', [AuthorController::class, 'posts'])->name('authorPosts');
+    Route::get('posts/new',[AuthorController::class, 'newPost'])->name('newPost');
+    Route::post('posts/new', [AuthorController::class, 'createPost'])->name('createPost');
     Route::get('comments', [AuthorController::class,'comments'])->name('authorComments');
 });
 
