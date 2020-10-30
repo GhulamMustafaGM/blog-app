@@ -47,6 +47,9 @@ Route::prefix('author')->group(function() {
     Route::get('posts', [AuthorController::class, 'posts'])->name('authorPosts');
     Route::get('posts/new',[AuthorController::class, 'newPost'])->name('newPost');
     Route::post('posts/new', [AuthorController::class, 'createPost'])->name('createPost');
+    Route::get('posts/{id}/new', [AuthorController::class, 'postEdit'])->name('postEdit');
+    Route::post('posts/{id}/new', [AuthorController::class, 'postEditPost'])->name('postEditPost');
+    Route::post('posts/{id}/delete', [AuthorController::class, 'deletePost'])->name('deletePost');
     Route::get('comments', [AuthorController::class,'comments'])->name('authorComments');
 });
 
