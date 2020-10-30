@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserUpdate;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -36,6 +37,25 @@ class UserController extends Controller
         $user->email = $request['email'];
         $user->save();
 
+        if($request['password'] != "") {
+            if(!(Hash::check($request['password'], Auth::user()->password))) {
+                return redirect()->back()->with('error', "Your current password does not match with the password you provided");
+            }
+
+            if(strcmp($request['password'], $request['new_password']) == 0 ) {
+                return redirect()->back()->with('error', "New password cannot be same as your current password.");
+            }
+
+            $valdidation = $request->validate([
+                'password' => 'required',
+                'new_password' => 'required|string|min:6|confirmed'
+            ]);
+
+            $user->password = bcrypt($request['new_password']);
+            $user->save();
+
+            return redirect()->back()->with('success', "Password changed successfully");
+        } 
         return back();
     }
 }
