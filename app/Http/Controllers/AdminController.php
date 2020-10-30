@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use CreatePostsTable;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreatePost;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -21,7 +25,28 @@ class AdminController extends Controller
     }
 
     public function posts() {
-        return view('admin.posts');
+        $posts = Post::all();
+        return view('admin.posts', compact('posts'));
+    }
+
+    public function postEdit($id) {
+        $post = Post::where('id', $id)->first();
+        return view('admin.editPost', compact('post'));
+    }
+
+    public function postEditPost(CreatePost $request, $id) {
+        $post = Post::where('id', $id)->first();
+        $post->title = $request['title'];
+        $post->content = $request['content'];
+        $post->save();
+
+        return back()->with('success', "Post updated successfully ");
+    }
+
+    public function deletePost($id) {
+        $post = Post::where('id', $id)->first();
+        $post->delete();
+        return back();
     }
 
     public function users() {
