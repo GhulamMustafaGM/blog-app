@@ -60,5 +60,6 @@ Route::prefix('admin')->group(function(){
     Route::post('posts/{id}/new', [AdminController::class, 'postEditPost'])->name('adminPostEditPost');
     Route::post('posts/{id}/delete', [AdminController::class, 'deletePost'])->name('adminDeletePost');
     Route::get('comments', [AdminController::class, 'comments'])->name('adminComments');
+    Route::post('comment/{id}/delete', [AdminController::class,'deleteComment'])->name('adminDeleteComment');
     Route::get('users', [AdminController::class, 'users'])->name('adminUsers');
 });
