@@ -36,7 +36,7 @@
                             <td>{{ \Carbon\Carbon::parse($user->updated_at)->diffForHumans() }} </td>
 
                                 <td>
-                                <a href=" {{ route('adminEditUer', $user->id) }}" class ="btn btn-warning" ><i class="icon icon-pencil" ></i></a>
+                                <a href=" {{ route('adminEditUser', $user->id) }}" class ="btn btn-warning" ><i class="icon icon-pencil" ></i></a>
                                 <form style="display:none;" method="POST" id="deleteUser-{{ $user->id }}" action="#">@csrf</form>
                                 <button type="button" class="btn btn-danger" onclick="document.getElementById('deleteUser-{{ $user->id }}').submit()">x</button>
                                 </td>
