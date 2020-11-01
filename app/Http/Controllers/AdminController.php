@@ -15,6 +15,7 @@ class AdminController extends Controller
 {
     public function __construct() {
         $this->middleware('CheckRole:admin');
+        $this->middleware('auth');
             
     }
     //
