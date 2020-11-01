@@ -48,9 +48,8 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="normal-input" class="form-control-label">Permissions</label>
-                                        <input type="checkbox" class="form-control" name="author" value="1"> author
-                                        <br>
-                                        <input type="checkbox" class="form-control" name="admin" value="1"> Admin
+                                        <input type="checkbox"  name="author" value=1 {{ $user->author == true ? 'checked': ''}}>Author
+                                        <input type="checkbox"  name="admin" value=1 {{ $user->admin == true ? 'checked': ''}}>Admin
                                     </div>
                                 </div>
 
