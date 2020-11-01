@@ -8,6 +8,7 @@ use CreatePostsTable;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreatePost;
+use App\Http\Requests\UserUpdate;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -66,5 +67,26 @@ class AdminController extends Controller
     public function editUser($id) {
         $user = User::where('id', $id)->first();
         return view('admin.editUser', compact('user'));
+    }
+
+    public function editUserPost(UserUpdate $request, $id) {
+        $user = User::where('id', $id)->first();
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+
+        if($request['author'] == 1 ) {
+            $user->author = true;
+        } elseif($request['admin'] == 1) {
+            $user->admin = true;
+        }
+        $user->save();
+        return back()->with('success', 'User updated successfully ');
+    }
+
+    public function deleteUser($id) {
+        $user = User::where('id', $id)->first();
+        $user->delete();
+
+        return back();
     }
 }

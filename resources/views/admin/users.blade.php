@@ -37,7 +37,7 @@
 
                                 <td>
                                 <a href=" {{ route('adminEditUser', $user->id) }}" class ="btn btn-warning" ><i class="icon icon-pencil" ></i></a>
-                                <form style="display:none;" method="POST" id="deleteUser-{{ $user->id }}" action="#">@csrf</form>
+                                <form style="display:none;" method="POST" id="deleteUser-{{ $user->id }}" action="{{ route('adminDeleteUser', $user->id) }}">@csrf</form>
                                 <button type="button" class="btn btn-danger" onclick="document.getElementById('deleteUser-{{ $user->id }}').submit()">x</button>
                                 </td>
                             </tr>

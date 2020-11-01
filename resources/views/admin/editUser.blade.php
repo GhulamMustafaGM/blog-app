@@ -27,7 +27,7 @@
                         </div>
                         
                     @endif
-                    <form action="#" method="POST">
+                    <form action="{{ route('adminEditUserPost', $user->id) }}" method="POST">
                     @csrf
                         <div class="card-body">
                             <div class="row">
@@ -47,9 +47,9 @@
 
                                 <div class="col-md-8">
                                     <div class="form-group">
-                                        <label for="normal-input" class="form-control-label">Permissions</label>
-                                        <input type="checkbox"  name="author" value=1 {{ $user->author == true ? 'checked': ''}}>Author
-                                        <input type="checkbox"  name="admin" value=1 {{ $user->admin == true ? 'checked': ''}}>Admin
+                                        <label for="normal-input" class="form-control-label">Permissions</label><br>
+                                        <input type="checkbox"  name="author" value=1 {{ $user->author == true ? 'checked' : ''}}>  Author <br>
+                                        <input type="checkbox"  name="admin" value=1 {{ $user->admin == true ? 'checked' : ''}}>  Admin
                                     </div>
                                 </div>
 
