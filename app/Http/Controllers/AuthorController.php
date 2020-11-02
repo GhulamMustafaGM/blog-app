@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use App\Http\Requests\CreatePost;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Charts\DashboardChart;
 
 class AuthorController extends Controller
 {
@@ -21,8 +22,30 @@ class AuthorController extends Controller
         $posts = Post::where('user_id', Auth::id())->pluck('id')->toArray();
         $allComments = Comment::whereIn('post_id', $posts)->get();
         $todayComments = $allComments->where('created_at', '>=', \Carbon\Carbon::today())->count(); 
+
+        $chart = new DashboardChart;
+
+        $days = $this->generatedDateRange(Carbon::now()->subDays(30), Carbon::now());
+
+        $posts = [];
+
+        foreach ($days as $day) {
+            $posts[] = Post::whereDate('created_at', $day)->where('user_id', Auth::id())->count();
+        }
+
+        $chart->dataset('Posts', 'line', $posts);
+        $chart->labels($days);
+
         
-        return view('author.dashboard', compact('allComments', 'todayComments'));
+        return view('author.dashboard', compact('allComments', 'todayComments', 'chart'));
+    }
+
+    private function generatedDateRange(Carbon $start_date, Carbon $end_date) {
+        $dates = [];
+        for($date = $start_date; $date->lte($end_date); $date->addDay()) {
+            $dates[] = $date->format('Y-m-d');
+        }
+        return $dates;
     }
 
     public function posts() {

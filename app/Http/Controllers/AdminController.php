@@ -7,9 +7,11 @@ use App\Models\User;
 use CreatePostsTable;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Requests\CreatePost;
 use App\Http\Requests\UserUpdate;
 use Illuminate\Support\Facades\Auth;
+use App\Charts\DashboardChart;
 
 class AdminController extends Controller
 {
@@ -20,9 +22,30 @@ class AdminController extends Controller
     }
     //
     public function dashboard() {
-        return view('admin.dashboard');
+
+        $chart = new DashboardChart;
+
+        $days = $this->generatedDateRange(Carbon::now()->subDays(30), Carbon::now());
+
+        $comments = [];
+
+        foreach ($days as $day) {
+            $comments[] = Comment::whereDate('created_at', $day)->count();
+        }
+
+        $chart->dataset('Comments', 'line', $comments);
+        $chart->labels($days);
+
+        return view('admin.dashboard', compact('chart'));
     }
 
+    private function generatedDateRange(Carbon $start_date, Carbon $end_date) {
+        $dates = [];
+        for($date = $start_date; $date->lte($end_date); $date->addDay()) {
+            $dates[] = $date->format('Y-m-d');
+        }
+        return $dates;
+    }
     
     public function comments() {
         $comments = Comment::all();
