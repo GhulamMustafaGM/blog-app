@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Http\Models\User;
 use Illuminate\Http\Request;
+use App\Charts\DashboardChart;
+use Illuminate\Support\Carbon;
 use App\Http\Requests\UserUpdate;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,20 +20,28 @@ class UserController extends Controller
         return $this->middleware('auth');
     }
     
-   
     public function dashboard() {
+        
         $chart = new DashboardChart;
 
-        $chart = new DashboardChar;
+        $days = $this->generatedDateRange(Carbon::now()->subDays(30), Carbon::now());
 
-        $days = $this->generatedDateRange(Carbon:;now()->subDays(30), Carbon::now());
-        return view('user.dashboard');
+        $comments = [];
+
+        foreach ($days as $day) {
+            $comments[] = Comment::whereDate('created_at', $day)->where('user_id', Auth::id())->count();
+        }
+
+        $chart->dataset('Comments', 'line', $comments);
+        $chart->labels($days);
+
+        return view('user.dashboard', compact('chart'));
     }
 
     private function generatedDateRange(Carbon $start_date, Carbon $end_date) {
         $dates = [];
         for($date = $start_date; $date->lte($end_date); $date->addDay()) {
-            $dates[] = $date=>format('Y-m-d');
+            $dates[] = $date->format('Y-m-d');
         }
         return $dates;
     }
