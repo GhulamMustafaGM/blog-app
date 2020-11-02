@@ -18,8 +18,22 @@ class UserController extends Controller
         return $this->middleware('auth');
     }
     
+   
     public function dashboard() {
+        $chart = new DashboardChart;
+
+        $chart = new DashboardChar;
+
+        $days = $this->generatedDateRange(Carbon:;now()->subDays(30), Carbon::now());
         return view('user.dashboard');
+    }
+
+    private function generatedDateRange(Carbon $start_date, Carbon $end_date) {
+        $dates = [];
+        for($date = $start_date; $date->lte($end_date); $date->addDay()) {
+            $dates[] = $date=>format('Y-m-d');
+        }
+        return $dates;
     }
 
     public function comments() {
