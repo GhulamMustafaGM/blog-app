@@ -59,13 +59,12 @@
             <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">No, keept it</button>
             <form method="POST" id="deletePost-{{ $post->id }}" action="{{ route('adminDeletePost', $post->id) }}">@csrf
-            <button type="button" class="btn btn-primary">yes, delete it</button>
+            <button style="display: none;" type="button" class="btn btn-primary">yes, delete it</button>
             </form>
             </div>
             </div>
         </div>
     </div>
-    
 @endforeach
 
 @endsection

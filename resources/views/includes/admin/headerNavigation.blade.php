@@ -5,7 +5,7 @@
     </a>
 
     <a class="navbar-brand" href="{{ url('/') }} ">
-        <img src="{{ asset('admin/assets/imgs/logo.png') }}" alt="logo" >
+        <img src="{{ asset('admin/assets/imgs/hemdel.jpeg') }}" alt="logo" width="220" height=45" >
     </a>
 
     <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
