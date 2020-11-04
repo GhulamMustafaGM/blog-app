@@ -31,9 +31,9 @@
                                 <td>{{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans() }} </td>
                                 <td>{{ $post->comments->count() }}</td>
                                 <td>
-                                    <a href="{{ route('adminPostEdit', $post->id) }}" class="btn-warning">Edit</a>
-                                    <form method ="POST" id="deletePost-{{ $post->id }}" action="{{ route('adminDeletePost', $post->id) }}">@csrf</form>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletePostModal-{{$post->id}}"></button>
+                                    <a href="{{ route('adminPostEdit', $post->id) }}" class ="btn btn-warning" ><i class="icon icon-pencil"></i></a>
+                                    <form style="display:none;" method ="POST" id="deletePost-{{ $post->id }}" action="{{ route('adminDeletePost', $post->id) }}">@csrf</form>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletePostModal-{{$post->id}}">X</button>
                                 </td>
                             </tr>
                     @endforeach
@@ -45,14 +45,13 @@
     </div>
 </div>
 
-
-
-
-<div class="modal fade" id="deletePostModal-{{ $post->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach($posts as $post)
+    <!-- Modal -->
+<div class="modal fade" id="deletePostModal-{{ $post->id }}" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">You are about to delete {{ $post->title }}.</h5>
+            <h5 class="modal-title" id="myModalLabel">You are about to delete {{ $post->title }}.</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -63,35 +62,13 @@
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">No, keep it</button>
             <form method="POST" id="deletePost-{{ $post->id }}" action="{{ route('adminDeletePost', $post->id) }}">@csrf
-            <button type="button" class="btn btn-primary">Yes, delete it</button>
+            <button type="submit" class="btn btn-primary">Yes, delete it</button>
             </form>
             </div>
         </div>
         </div>
     </div>
 
-
-
-@foreach($posts as $post)
-    <!-- Modal -->
-    <div class="modal fade" id="deletePostModal-{{ $post->id }}" tabindex="-1" role ="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="myModalLable">You are about to delete {{ $post->title }}.</h5>    
-        </div>
-            <div class="modal-body">
-                Are you sure?
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">No, keept it</button>
-            <form method="POST" id="deletePost-{{ $post->id }}" action="{{ route('adminDeletePost', $post->id) }}">@csrf
-            <button style="display: none;" type="button" class="btn btn-primary">yes, delete it</button>
-            </form>
-            </div>
-            </div>
-        </div>
-    </div>
 @endforeach
 
 @endsection
