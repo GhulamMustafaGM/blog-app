@@ -33,12 +33,10 @@
                             <i class="fa fa-comment" aria-hidden="true"></i>{{ $post->comments->count() }}
                         </p>
                     </div>
-            <hr>
+                    <hr>
             @endforeach
-            {{ $posts->links() }}
         </div>
     </div>
 </div>
-
 @endsection
 
