@@ -9,8 +9,8 @@
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
         <div class="site-heading">
-            <h1>Hemdel Blog</h1>
-            <span class="subheading">Hemdel Blog powered by HEMDEL</span>
+            <h1>ABGOI Blog</h1>
+            <span class="subheading">ABGOI Blog powered by ABGOI</span>
         </div>
         </div>
     </div>
