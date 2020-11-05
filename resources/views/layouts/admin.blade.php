@@ -11,8 +11,7 @@
 </head>
 <body class="sidebar-fixed header-fixed">
 <div class="page-wrapper">
-        @include('includes.admin.headerNavigation')
-
+    @include('includes.admin.headerNavigation')
     <div class="main-container">
         @include('includes.admin.sidebarNavigation')
         @yield('content')

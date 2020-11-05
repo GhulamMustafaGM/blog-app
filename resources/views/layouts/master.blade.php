@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>@yield('title', 'Hemdel Blog')</title>
+<title>@yield('title', 'ABGOI Blog')</title>
 
 <!-- Bootstrap core CSS -->
 <link href= "{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -57,7 +57,7 @@
             </a>
             </li>
         </ul>
-        <p class="copyright text-muted">Copyright &copy; Hemdel 2020</p>
+        <p class="copyright text-muted">Copyright &copy; ABGOI 2020</p>
         </div>
     </div>
     </div>
