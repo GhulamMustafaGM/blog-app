@@ -44,7 +44,7 @@
     </div>
 </div>
 
-@foreach(Auth::user()->$posts as $post)
+@foreach(Auth::user()->posts as $post)
     <!-- Modal -->
 <div class="modal fade" id="deletePostModal-{{ $post->id }}" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

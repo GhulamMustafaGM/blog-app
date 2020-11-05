@@ -35,6 +35,7 @@ Auth::routes();
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 Route::prefix('user')->group(function() {
+    Route::post('new-comment',[UserController::class,'newComment'])->name('newComment');
     Route::get('dashboard', [UserController::class, 'dashboard'])->name('userDashboard');
     Route::get('comments', [UserController::class,'comments'])->name('userComments');
     Route::post('comment/{id/delete}', [UserController::class,'deleteComment'])->name('deleteComment');
