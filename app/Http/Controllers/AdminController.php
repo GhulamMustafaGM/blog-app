@@ -121,7 +121,7 @@ class AdminController extends Controller
     }
 
     public function newProduct() {
-
+        return view('admin.newProduct');
     }
 
     public function newProductPost(Request $request) {
