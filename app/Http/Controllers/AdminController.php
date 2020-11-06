@@ -6,12 +6,13 @@ use App\Models\Post;
 use App\Models\User;
 use CreatePostsTable;
 use App\Models\Comment;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Charts\DashboardChart;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\CreatePost;
 use App\Http\Requests\UserUpdate;
 use Illuminate\Support\Facades\Auth;
-use App\Charts\DashboardChart;
 
 class AdminController extends Controller
 {
@@ -115,7 +116,8 @@ class AdminController extends Controller
     }
 
     public function products() {
-
+        $products = Product::all();
+        return view('admin.products', compact('products'));
     }
 
     public function newProduct() {
