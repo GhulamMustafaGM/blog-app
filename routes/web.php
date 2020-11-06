@@ -6,7 +6,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -66,4 +68,8 @@ Route::prefix('admin')->group(function(){
     Route::get('user/{id}/edit', [AdminController::class, 'editUser'])->name('adminEditUser');
     Route::post('user/{id}/edit', [AdminController::class, 'editUserPost'])->name('adminEditUserPost');
     Route::post('user/{id}/delete', [AdminController::class, 'deleteUser'])->name('adminDeleteUser');
+});
+
+Route::prefix('shop')->group(function() {
+    Route::get('/', [ShopController::class, 'index'])->name('shop.index');
 });
