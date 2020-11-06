@@ -113,4 +113,24 @@ class AdminController extends Controller
 
         return back();
     }
+
+    public function products() {
+
+    }
+
+    public function newProduct() {
+
+    }
+
+    public function newProductPost(Request $request) {
+
+    }
+
+    public function editProduct() {
+
+    }
+
+    public function editProductPost(Request $request) {
+
+    }
 }
