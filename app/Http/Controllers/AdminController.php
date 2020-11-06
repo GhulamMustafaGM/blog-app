@@ -125,12 +125,14 @@ class AdminController extends Controller
     }
 
     public function newProductPost(Request $request) {
+        
         $this->validate($request, [
             'title' => 'required|string',
             'thumbnail' => 'required|file',
             'description' => 'required',
-            'price' => 'required|regex:/^[0-9]+(\.[0-9])[0-9]?)?$}/'
+            'price' => 'required|regex:/^[0-9]+(\.[0-9][0-9]?)?$/'
         ]);
+
         $product = new Product;
         $product->title = $request['title'];
         $product->description = $request['description'];

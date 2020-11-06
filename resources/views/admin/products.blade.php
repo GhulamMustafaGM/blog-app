@@ -28,11 +28,13 @@
                         @foreach($products as $product)
                             <tr>
                                 <td>{{ $product->id }}</td>
-                                <td><img src="{{ $product->thumbnail }}" width="100"> </td>
-                                <td class="text-nowrap"><a href="{{ route('adminEditProduct'), $product->id }}"> {{ $product->title }}</a>></a></td>
+                                <td><img src="{{ asset($product->thumbnail) }}" width="100"> </td>
+                                <td class="text-nowrap"><a href="{{ route('adminEditProduct', $product->id) }}"> {{ $product->title }}</a></a></td>
+                                
                                 <td>{{ $product->description }}</td>
-                                <td>{{ $product->price }}USD</td>
-                            <a href="{{ route('adminEditProduct', $product->id) }}" class="btn btn-warning"><i class="icon incon-pencil"></i></a>
+                                <td>{{ $product->price }} USD</td>
+                                <td>
+                                    <a href="{{ route('adminEditProduct', $product->id) }}" class="btn btn-warning"><i class="icon icon-pencil"></i></a>
                                 </td>
                             </tr>
                     @endforeach
