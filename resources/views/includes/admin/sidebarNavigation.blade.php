@@ -1,7 +1,7 @@
 <div class="sidebar">
     <nav class="sidebar-nav">
         <ul class="nav">
-            <li class="nav-title">Navigation</li>
+            <li class="nav-title">User</li>
 
             <li class="nav-item">
             <a href="{{ route('userDashboard') }}" class=" nav-link {{ Route::currentRouteName() == 'userDashboard' ? 'active' : '' }}">

@@ -9,7 +9,6 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,16 +24,16 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [PublicController::class, 'index'])->name('index');
 Route::get('post/{post}', [PublicController::class,'singlePost'])->name('singlePost');
-Route::get('/about', [PublicController::class,'about'])->name('about');
+Route::get('about', [PublicController::class,'about'])->name('about');
 
-Route::get('/contact', [PublicController::class,'contact'])->name('contact');
-Route::post('/contact', [PublicController::class, 'contactPost'])->name('contactPost');
-
-
+Route::get('contact', [PublicController::class,'contact'])->name('contact');
+Route::post('contact', [PublicController::class, 'contactPost'])->name('contactPost');
 
 Auth::routes();
 
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+Route::get('dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+// Users Dashboard
 
 Route::prefix('user')->group(function() {
     Route::post('new-comment',[UserController::class,'newComment'])->name('newComment');
@@ -45,16 +44,20 @@ Route::prefix('user')->group(function() {
     Route::post('profile', [UserController::class, 'profilePost'])->name('userprofilePost');
 });
 
+// Author Dashboard
+
 Route::prefix('author')->group(function() {
     Route::get('dashboard', [AuthorController::class, 'dashboard'])->name('authorDashboard');
     Route::get('posts', [AuthorController::class, 'posts'])->name('authorPosts');
     Route::get('posts/new',[AuthorController::class, 'newPost'])->name('newPost');
     Route::post('posts/new', [AuthorController::class, 'createPost'])->name('createPost');
-    Route::get('posts/{id}/new', [AuthorController::class, 'postEdit'])->name('postEdit');
-    Route::post('posts/{id}/new', [AuthorController::class, 'postEditPost'])->name('postEditPost');
+    Route::get('posts/{id}/edit', [AuthorController::class, 'postEdit'])->name('postEdit');
+    Route::post('posts/{id}/edit', [AuthorController::class, 'postEditPost'])->name('postEditPost');
     Route::post('posts/{id}/delete', [AuthorController::class, 'deletePost'])->name('deletePost');
     Route::get('comments', [AuthorController::class,'comments'])->name('authorComments');
 });
+
+    // Admin Dashboard
 
 Route::prefix('admin')->group(function(){
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
