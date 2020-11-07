@@ -82,4 +82,6 @@ Route::prefix('admin')->group(function(){
 
 Route::prefix('shop')->group(function() {
     Route::get('/', [ShopController::class, 'index'])->name('shop.index');
+    Route::get('product/{id}', [ShopController::class, 'singleProduct'])->name('shop.singleProduct');
+    Route::get('product/{id}/order', [ShopController::class, 'orderProduct'])->name('shop.orderProduct');
 });
