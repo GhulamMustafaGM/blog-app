@@ -78,6 +78,9 @@ Route::prefix('admin')->group(function(){
     Route::get('product/{id}', [AdminController::class, 'EditProduct'])->name('adminEditProduct');
     Route::post('product/{id}', [AdminController::class, 'EditProductPost'])->name('adminEditProduct');
 
+    Route::post('product/{id}/delete', [AdminController::class, 'deleteProduct'])->name('adminDeleteProduct');
+
+
 });
 
 Route::prefix('shop')->group(function() {
